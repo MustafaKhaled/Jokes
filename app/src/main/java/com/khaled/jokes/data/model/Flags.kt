@@ -1,8 +1,6 @@
 package com.khaled.jokes.data.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 /*
@@ -16,13 +14,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
+data class Flags(
 
-data class Flags (
-
-		@SerializedName("nsfw") val nsfw : Boolean,
-		@SerializedName("religious") val religious : Boolean,
-		@SerializedName("political") val political : Boolean,
-		@SerializedName("racist") val racist : Boolean,
-		@SerializedName("sexist") val sexist : Boolean,
-		@SerializedName("explicit") val explicit : Boolean
-): Serializable
+    @SerializedName("nsfw") val nsfw: Boolean,
+    @SerializedName("religious") val religious: Boolean,
+    @SerializedName("political") val political: Boolean,
+    @SerializedName("racist") val racist: Boolean,
+    @SerializedName("sexist") val sexist: Boolean,
+    @SerializedName("explicit") val explicit: Boolean
+) : Serializable

@@ -3,7 +3,6 @@ package com.khaled.jokes.di.modules
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.khaled.jokes.MyApplication
-import com.khaled.jokes.data.ErrorHandlerImpl
 import com.khaled.jokes.data.remote.EndPoints
 import com.khaled.jokes.util.Constants
 import dagger.Module
@@ -15,7 +14,6 @@ import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
@@ -64,17 +62,15 @@ class NetworkModule {
         return okHttpClientBuilder.build()
     }
 
-
     @Provides
     @Singleton
     fun provideHeaderInterceptor(): Interceptor {
         return Interceptor {
             val requestBuilder = it.request().newBuilder()
-            //hear you can add all headers you want by calling 'requestBuilder.addHeader(name ,  value)'
+            // hear you can add all headers you want by calling 'requestBuilder.addHeader(name ,  value)'
             it.proceed(requestBuilder.build())
         }
     }
-
 
     @Provides
     @Singleton
@@ -82,7 +78,6 @@ class NetworkModule {
         val httpCacheDirectory = File(context.cacheDir.absolutePath, "HttpCache")
         return Cache(httpCacheDirectory, CACHE_SIZE_BYTES)
     }
-
 
     @Provides
     @Singleton

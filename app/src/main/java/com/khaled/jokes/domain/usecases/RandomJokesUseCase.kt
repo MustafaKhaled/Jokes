@@ -1,9 +1,7 @@
 package com.khaled.jokes.domain.usecases
 
-import com.khaled.jokes.data.remote.EndPoints
 import com.khaled.jokes.domain.ErrorHandler
 import com.khaled.jokes.domain.repo.IRandomJokes
-import com.khaled.jokes.util.ErrorEntity
 import com.khaled.jokes.util.Resource
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

@@ -7,12 +7,12 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import javax.inject.Inject
 
-class ErrorHandlerImpl @Inject constructor(): ErrorHandler {
+class ErrorHandlerImpl @Inject constructor() : ErrorHandler {
     override fun getError(throwable: Throwable): ErrorEntity {
-        return when(throwable) {
+        return when (throwable) {
             is IOException -> ErrorEntity.Network
             is HttpException -> {
-                when(throwable.code()) {
+                when (throwable.code()) {
 
                     HttpURLConnection.HTTP_NOT_FOUND -> ErrorEntity.NotFound
 

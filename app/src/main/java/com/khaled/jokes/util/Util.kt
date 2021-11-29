@@ -5,8 +5,8 @@ import android.widget.ProgressBar
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 object Util {
-    fun updateLoadingVisibility(view: View, isShown: Boolean){
-        when(view){
+    fun updateLoadingVisibility(view: View, isShown: Boolean) {
+        when (view) {
             is ProgressBar -> {
                 if (isShown)
                     view.visibility = View.VISIBLE

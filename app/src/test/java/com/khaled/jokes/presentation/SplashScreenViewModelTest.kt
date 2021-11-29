@@ -6,13 +6,19 @@ import com.khaled.jokes.domain.usecases.LaunchTimesUseCase
 import com.khaled.jokes.util.Resource
 import io.mockk.coEvery
 import io.mockk.mockk
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.*
-import org.junit.*
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 import org.junit.rules.TestRule
-
 
 @ExperimentalCoroutinesApi
 class SplashScreenViewModelTest {
@@ -25,46 +31,46 @@ class SplashScreenViewModelTest {
     }
 
     @Test
-    fun verify_getLaunchTimes_shouldReturnData() = runBlockingTest{
+    fun verify_getLaunchTimes_shouldReturnData() = runBlockingTest {
         val useCase = mockk<LaunchTimesUseCase>(relaxed = true)
         val exceptedCounter = 3
         mockk<Resource.Loading>()
         val viewModel = SplashScreenViewModel(useCase)
-        viewModel.launchTimeLiveData.observeForever {  }
+        viewModel.launchTimeLiveData.observeForever { }
         coEvery { useCase.getLaunchTimes() } returns flowOf(Resource.Success(exceptedCounter))
         viewModel.getAppLaunchTimes()
-        Assert.assertEquals(
+        assertEquals(
             Resource.Success(exceptedCounter),
             viewModel.launchTimeLiveData.value
         )
     }
 
     @Test
-    fun verify_getLaunchTimes_shouldThrowException() = runBlockingTest{
+    fun verify_getLaunchTimes_shouldThrowException() = runBlockingTest {
         val useCase = mockk<LaunchTimesUseCase>(relaxed = true)
         val exception = mockk<Exception>()
         val errorHandler = mockk<ErrorHandler>(relaxed = true)
         mockk<Resource.Loading>()
         val viewModel = SplashScreenViewModel(useCase)
-        viewModel.launchTimeLiveData.observeForever {  }
-        coEvery { useCase.getLaunchTimes() } returns  flowOf(Resource.Failure(errorHandler.getError(exception)))
+        viewModel.launchTimeLiveData.observeForever { }
+        coEvery { useCase.getLaunchTimes() } returns flowOf(Resource.Failure(errorHandler.getError(exception)))
         viewModel.getAppLaunchTimes()
-        Assert.assertEquals(
+        assertEquals(
             Resource.Failure(errorHandler.getError(exception)),
             viewModel.launchTimeLiveData.value
         )
     }
 
     @Test
-    fun verify_getLaunchTimes_shouldLoading() = runBlockingTest{
+    fun verify_getLaunchTimes_shouldLoading() = runBlockingTest {
         val useCase = mockk<LaunchTimesUseCase>(relaxed = true)
         val exception = Resource.Loading
         mockk<Resource.Loading>()
         val viewModel = SplashScreenViewModel(useCase)
-        viewModel.launchTimeLiveData.observeForever {  }
-        coEvery { useCase.getLaunchTimes() } returns  flowOf(exception)
+        viewModel.launchTimeLiveData.observeForever { }
+        coEvery { useCase.getLaunchTimes() } returns flowOf(exception)
         viewModel.getAppLaunchTimes()
-        Assert.assertEquals(
+        assertEquals(
             exception,
             viewModel.launchTimeLiveData.value
         )

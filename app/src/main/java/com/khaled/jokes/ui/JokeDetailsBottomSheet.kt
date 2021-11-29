@@ -10,7 +10,7 @@ import com.khaled.jokes.data.model.JokeItem
 import com.khaled.jokes.util.Constants.JOKES_DETAILS_KEY
 import kotlinx.android.synthetic.main.layout_joke_details_bottom_sheet.*
 
-class JokeDetailsBottomSheet: BottomSheetDialogFragment() {
+class JokeDetailsBottomSheet : BottomSheetDialogFragment() {
     lateinit var jokeItem: JokeItem
     fun newInstance(jokeItem: JokeItem): JokeDetailsBottomSheet {
         val args = Bundle()
@@ -25,7 +25,6 @@ class JokeDetailsBottomSheet: BottomSheetDialogFragment() {
         jokeItem = arguments?.getSerializable(JOKES_DETAILS_KEY) as JokeItem
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,7 +38,7 @@ class JokeDetailsBottomSheet: BottomSheetDialogFragment() {
         bindArgument(jokeItem)
     }
 
-        private fun bindArgument(jokeItem: JokeItem) {
+    private fun bindArgument(jokeItem: JokeItem) {
         populateUI(jokeItem)
     }
 

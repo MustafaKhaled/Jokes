@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-android-extensions'
-    id "io.gitlab.arturbosch.detekt" version "1.19.0-RC2"
 }
 
 android {
@@ -109,6 +108,4 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-idling-resource:3.4.0')
     androidTestImplementation('androidx.test.espresso.idling:idling-concurrent:3.4.0')
     implementation("androidx.test.espresso:espresso-idling-resource:3.5.0-alpha03")
-    //detekt Plugin
-    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0"
 }

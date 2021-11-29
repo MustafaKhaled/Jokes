@@ -15,7 +15,7 @@ const val preferenceName = "app_pref"
 class SharedPreferencesModule {
     @Singleton
     @Provides
-    fun providesSharedPreferenceInstance(@ApplicationContext context: Context): SharedPreferences{
+    fun providesSharedPreferenceInstance(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
     }
 }

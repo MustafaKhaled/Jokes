@@ -8,12 +8,12 @@ import com.khaled.jokes.R
 import com.khaled.jokes.data.model.JokeItem
 import kotlinx.android.synthetic.main.joke_list_item.view.*
 
-class JokesAdapter: RecyclerView.Adapter<JokesAdapter.JokeViewHolder>() {
+class JokesAdapter : RecyclerView.Adapter<JokesAdapter.JokeViewHolder>() {
     private val jokesList = ArrayList<JokeItem>()
     var onItemClick: ((JokeItem) -> Unit)? = null
-    inner class JokeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class JokeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 onItemClick?.invoke(jokesList[adapterPosition])
             }
         }
@@ -23,15 +23,14 @@ class JokesAdapter: RecyclerView.Adapter<JokesAdapter.JokeViewHolder>() {
         }
     }
 
-
-    fun addAll(newJokesList: ArrayList<JokeItem>){
+    fun addAll(newJokesList: ArrayList<JokeItem>) {
         jokesList.clear()
         jokesList.addAll(newJokesList)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.joke_list_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.joke_list_item, parent, false)
         return JokeViewHolder(view)
     }
 

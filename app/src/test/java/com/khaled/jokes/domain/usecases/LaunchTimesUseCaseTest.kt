@@ -14,7 +14,7 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class LaunchTimesUseCaseTest {
     @Test
-    fun verify_getLaunchTimes_shouldReturnData() = runBlockingTest{
+    fun verify_getLaunchTimes_shouldReturnData() = runBlockingTest {
         val appLaunch = mockk<IAppLaunch>(relaxed = true)
         val errorHandler = mockk<ErrorHandler>(relaxed = true)
         val list = ArrayList<Resource<Int>>()
@@ -28,7 +28,7 @@ class LaunchTimesUseCaseTest {
     }
 
     @Test
-    fun verify_getLaunchTimes_shouldReturnFailure() = runBlockingTest{
+    fun verify_getLaunchTimes_shouldReturnFailure() = runBlockingTest {
         val appLaunch = mockk<IAppLaunch>(relaxed = true)
         val errorHandler = mockk<ErrorHandler>(relaxed = true)
         val list = ArrayList<Resource<Int>>()

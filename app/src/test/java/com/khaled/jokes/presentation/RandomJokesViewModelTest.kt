@@ -32,37 +32,37 @@ class RandomJokesViewModelTest {
     }
 
     @Test
-    fun verify_getRandomJokes_shouldReturnData() = runBlockingTest{
+    fun verify_getRandomJokes_shouldReturnData() = runBlockingTest {
         val useCase = mockk<RandomJokesUseCase>(relaxed = true)
         val jokes = mockk<Jokes>(relaxed = true)
         val expected = Resource.Success(jokes)
         val viewModel = RandomJokesViewModel(useCase)
-        viewModel.randomJokesLiveData.observeForever{}
+        viewModel.randomJokesLiveData.observeForever {}
         coEvery { useCase.getRandomJokes() } returns flowOf(Resource.Success(jokes))
         viewModel.getRandomJokes()
         assertEquals(expected, viewModel.randomJokesLiveData.value)
     }
 
     @Test
-    fun verify_getRandomJokes_shouldReturnError() = runBlockingTest{
+    fun verify_getRandomJokes_shouldReturnError() = runBlockingTest {
         val useCase = mockk<RandomJokesUseCase>(relaxed = true)
         val errorHandler = mockk<ErrorHandler>(relaxed = true)
-        val exception =  mockk<Exception>(relaxed = true)
+        val exception = mockk<Exception>(relaxed = true)
         val expected = Resource.Failure(errorHandler.getError(exception))
         val viewModel = RandomJokesViewModel(useCase)
-        viewModel.randomJokesLiveData.observeForever{}
+        viewModel.randomJokesLiveData.observeForever {}
         coEvery { useCase.getRandomJokes() } returns flowOf(Resource.Failure(errorHandler.getError(exception)))
         viewModel.getRandomJokes()
         assertEquals(expected, viewModel.randomJokesLiveData.value)
     }
 
     @Test
-    fun verify_getRandomJokes_shouldLoading() = runBlockingTest{
+    fun verify_getRandomJokes_shouldLoading() = runBlockingTest {
         val useCase = mockk<RandomJokesUseCase>(relaxed = true)
         val exception = Resource.Loading
         val viewModel = RandomJokesViewModel(useCase)
-        viewModel.randomJokesLiveData.observeForever {  }
-        coEvery { useCase.getRandomJokes() } returns  flowOf(exception)
+        viewModel.randomJokesLiveData.observeForever { }
+        coEvery { useCase.getRandomJokes() } returns flowOf(exception)
         viewModel.getRandomJokes()
         assertEquals(
             exception,
