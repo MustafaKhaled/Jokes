@@ -10,13 +10,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 package com.khaled.jokes.data.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-data class Jokes (
-		@SerializedName("error") val error : Boolean,
-		@SerializedName("amount") val amount : Int,
-		@SerializedName("jokes") val jokes : List<JokeItem>
-): Serializable
+data class Jokes(
+    @SerializedName("error") val error: Boolean,
+    @SerializedName("amount") val amount: Int,
+    @SerializedName("jokes") val jokes: List<JokeItem>
+) : Serializable

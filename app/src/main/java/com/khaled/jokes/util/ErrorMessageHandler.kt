@@ -38,6 +38,5 @@ object ErrorMessageHandler {
                 action(R.string.ok_snackbar_text) { this.dismiss() }
             }
         }
-
     }
 }

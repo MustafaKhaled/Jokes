@@ -14,13 +14,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-data class JokeItem (
-        @SerializedName("category") val category : String,
-        @SerializedName("type") val type : String,
-        @SerializedName("setup") val setup : String,
-        @SerializedName("delivery") val delivery : String,
-        @SerializedName("flags") val flags : Flags,
-        @SerializedName("id") val id : Int,
-        @SerializedName("safe") val safe : Boolean,
-        @SerializedName("lang") val lang : String
+data class JokeItem(
+    @SerializedName("category") val category: String,
+    @SerializedName("type") val type: String,
+    @SerializedName("setup") val setup: String,
+    @SerializedName("delivery") val delivery: String,
+    @SerializedName("flags") val flags: Flags,
+    @SerializedName("id") val id: Int,
+    @SerializedName("safe") val safe: Boolean,
+    @SerializedName("lang") val lang: String
 ) : Serializable

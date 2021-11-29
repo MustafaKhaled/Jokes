@@ -8,13 +8,12 @@ import com.khaled.jokes.R
 import com.khaled.jokes.data.model.JokeItem
 import com.khaled.jokes.presentation.RandomJokesViewModel
 import com.khaled.jokes.util.Constants.BOTTOM_SHEET_TAG
-import com.khaled.jokes.util.Util.updateLoadingVisibility
 import com.khaled.jokes.util.CountingIdlingResourceSingleton
 import com.khaled.jokes.util.ErrorMessageHandler
 import com.khaled.jokes.util.Resource
+import com.khaled.jokes.util.Util.updateLoadingVisibility
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_jokes.*
-
 
 @AndroidEntryPoint
 class JokesActivity : AppCompatActivity() {
@@ -30,9 +29,9 @@ class JokesActivity : AppCompatActivity() {
         jokesViewModel.getRandomJokes()
     }
 
-    private fun observeLaunchTimes(){
+    private fun observeLaunchTimes() {
         jokesViewModel.randomJokesLiveData.observe(this) { state ->
-            when(state){
+            when (state) {
                 is Resource.Failure -> {
                     updateLoadingVisibility(swipeRefresh, false)
                     ErrorMessageHandler.execute(state.error, findViewById(R.id.swipeRefresh))
@@ -54,7 +53,6 @@ class JokesActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupRecyclerView() {
         jokesList.adapter = adapter
         jokesList.setHasFixedSize(true)
@@ -64,7 +62,7 @@ class JokesActivity : AppCompatActivity() {
         }
     }
 
-    private fun pullToRefresh(){
+    private fun pullToRefresh() {
         swipeRefresh.setOnRefreshListener {
             jokesViewModel.getRandomJokes()
         }

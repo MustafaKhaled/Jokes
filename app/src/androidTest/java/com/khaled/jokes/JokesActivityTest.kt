@@ -18,35 +18,33 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class JokesActivityTest {
     @get:Rule
-    var activityRule: ActivityScenarioRule<JokesActivity>
-            = ActivityScenarioRule(JokesActivity::class.java)
+    var activityRule: ActivityScenarioRule<JokesActivity> =
+        ActivityScenarioRule(JokesActivity::class.java)
     @Before
     fun setUp() {
         IdlingRegistry.getInstance().register(CountingIdlingResourceSingleton.countingIdlingResource)
     }
 
     @Test
-    fun checkSwipeRefreshViews_appeared(){
+    fun checkSwipeRefreshViews_appeared() {
         onView(withId(R.id.swipeRefresh))
             .check(matches(isDisplayed()))
     }
     @Test
-    fun checkSwipeRefresh_hide(){
-        if(CountingIdlingResourceSingleton.countingIdlingResource.isIdleNow){
+    fun checkSwipeRefresh_hide() {
+        if (CountingIdlingResourceSingleton.countingIdlingResource.isIdleNow) {
             onView(withId(R.id.swipeRefresh)).check(matches(not(isDisplayed())))
         }
     }
 
     @Test
-    fun swipeToRefresh_shouldShowProgress(){
+    fun swipeToRefresh_shouldShowProgress() {
         onView(withId(R.id.swipeRefresh))
             .perform(ViewActions.swipeDown()).check(matches(isDisplayed()))
-
     }
 
     @After

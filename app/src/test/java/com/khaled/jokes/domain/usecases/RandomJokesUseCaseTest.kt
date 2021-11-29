@@ -13,9 +13,9 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class RandomJokesUseCaseTest{
+class RandomJokesUseCaseTest {
     @Test
-    fun verify_getRandomJokes_shouldReturnData() = runBlockingTest{
+    fun verify_getRandomJokes_shouldReturnData() = runBlockingTest {
         val randomJokes = mockk<IRandomJokes>(relaxed = true)
         val jokes = mockk<Jokes>()
         val errorHandler = mockk<ErrorHandler>(relaxed = true)
@@ -29,13 +29,13 @@ class RandomJokesUseCaseTest{
     }
 
     @Test
-    fun verify_getRandomJokes_shouldReturnFailure() = runBlockingTest{
+    fun verify_getRandomJokes_shouldReturnFailure() = runBlockingTest {
         val randomJokes = mockk<IRandomJokes>(relaxed = true)
         val errorHandler = mockk<ErrorHandler>(relaxed = true)
         val exception = mockk<Exception>(relaxed = true)
         val list = ArrayList<Resource<Jokes>>()
         val useCase = RandomJokesUseCase(randomJokes, errorHandler)
-        coEvery { randomJokes.getRandomJokes() } throws  exception
+        coEvery { randomJokes.getRandomJokes() } throws exception
         useCase.getRandomJokes().collect {
             list.add(it as Resource<Jokes>)
         }
