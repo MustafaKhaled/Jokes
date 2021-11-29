@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Jokes</string>
+    <string name="splash_screen_content_description">Splash screen</string>
+    <string name="app_launch_times">App Launches %d %s</string>
+    <string name="setup_label">Setup</string>
+    <string name="delivery_label">Delivery</string>
+    <string name="id_label">Id</string>
+    <string name="type_label">Type</string>
+    <string name="general_error_msg">Something went wrong!</string>
+    <string name="times_label">Times</string>
+    <string name="time_label">Time</string>
+    <string name="access_denied_string">You don\'t have access, please contact the admin</string>
+    <string name="no_internet_connection_msg">No internet connection</string>
+    <string name="data_not_found_msg">No data found, please try again later</string>
+    <string name="service_unavailable_msg">We are facing some server difficulties, try again later</string>
+    <string name="ok_snackbar_text">OK</string>
+</resources>
